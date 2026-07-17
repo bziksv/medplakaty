@@ -92,7 +92,7 @@ if (substr($APPLICATION->GetCurPage(),-3) === "-r/") {
                     <img src="<?=SITE_TEMPLATE_PATH?>/img/logo.png" alt="logo">
                 </a>
                 <div class="header__info">
-                    <div class="header__title">Медицинские плакаты</div>
+                    <div class="header__title">Медицинские и обучающие плакаты</div>
                     <div class="header__desc">Высокое качество прорисовки и печати</div>
                 </div>
             </div>
