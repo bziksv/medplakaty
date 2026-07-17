@@ -25,6 +25,9 @@ ssh "$HOST" "cd $PROD_PATH &&
   if [ -f bitrix/php_interface/dbconn.php ]; then
     cp -a bitrix/php_interface/dbconn.php /tmp/medplakaty_dbconn.php.bak
   fi
+  if [ -f .htaccess ]; then
+    cp -a .htaccess /tmp/medplakaty_htaccess.bak
+  fi
   if [ ! -d .git ]; then
     git init
     git remote add $REMOTE https://github.com/bziksv/medplakaty.git
@@ -48,12 +51,18 @@ ssh "$HOST" "cd $PROD_PATH &&
   if [ -f /tmp/medplakaty_dbconn.php.bak ]; then
     cp -a /tmp/medplakaty_dbconn.php.bak bitrix/php_interface/dbconn.php
   fi
+  if [ -f /tmp/medplakaty_htaccess.bak ]; then
+    cp -a /tmp/medplakaty_htaccess.bak .htaccess
+    echo 'restored .htaccess'
+  fi
   chown -R ${PROD_USER}:${PROD_USER} .
   rm -rf bitrix/cache/* bitrix/managed_cache/* bitrix/stack_cache/* 2>/dev/null || true
+  find bitrix/html_pages -type f -name '*.html' -delete 2>/dev/null || true
   git log -1 --oneline
   echo cache_cleared
 "
 
 echo "==> Verify"
 /usr/bin/curl -sS -o /dev/null -w 'home %{http_code}\n' --max-time 20 https://medplakaty.ru/
+/usr/bin/curl -sS -o /dev/null -w 'catalog section %{http_code}\n' --max-time 20 https://medplakaty.ru/catalog/obuchayushchie-plakaty/
 echo "==> Done"
