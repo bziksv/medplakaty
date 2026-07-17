@@ -619,12 +619,22 @@ ol,ul
     position: relative;
 }
 .slider a{
+    display: block;
+    height: 100%;
     text-decoration: none;
 }
 .slider__item
 {
-    background: #afbccd no-repeat center/cover;
-    padding: 134px 0 285px;
+    aspect-ratio: 1920 / 567;
+    background: #afbccd no-repeat center / cover;
+    box-sizing: border-box;
+    height: auto !important;
+    padding: 0;
+    position: relative;
+}
+.slider .lSSlideWrapper
+{
+    height: auto !important;
 }
 .slider__title
 {
@@ -633,7 +643,9 @@ ol,ul
     font-weight: 500;
     letter-spacing: -.04em;
     line-height: 1.1;
-    min-height: 148px;
+    min-height: 0;
+    padding: 60px 0 0;
+    pointer-events: none;
 }
 .slider__title span
 {
@@ -3387,7 +3399,11 @@ ol,ul
     }
     .slider__item
     {
-        padding: 55px 60px 117px;
+        padding: 0;
+    }
+    .slider__title
+    {
+        padding-top: 30px;
     }
     .slider .lSPager.lSpg
     {
@@ -4192,11 +4208,12 @@ ol,ul
     }
     .slider__item
     {
-        padding: 16px 30px 34px;
+        padding: 0;
     }
     .slider__title
     {
         font-size: 12px;
+        padding-top: 16px;
     }
     .slider .lSSlideOuter .lSNext,.slider .lSSlideOuter .lSPrev
     {
@@ -4607,11 +4624,12 @@ ol,ul
 
     .slider__item
     {
-        padding: 30px 50px 40px;
+        padding: 0;
     }
     .slider__title
     {
         font-size: 12px;
+        padding-top: 12px;
     }
     .slider .lSSlideOuter .lSNext,.slider .lSSlideOuter .lSPrev
     {
