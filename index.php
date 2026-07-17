@@ -81,27 +81,40 @@ $APPLICATION->SetTitle("Medplakaty - медицинские плакаты с д
                 );?>
             </div>
             <div class="main overflow-hidden">
-                <div class="title">Категории</div>
+                <div class="title">Популярные категории</div>
 
                 <?
                 $arHomeSection = array();
-                $arFilter = array('IBLOCK_ID' => IBLOCK_CATALOG, 'ACTIVE' => 'Y', 'UF_SHOW_HOME' => true);
+                $arFilter = array('IBLOCK_ID' => IBLOCK_CATALOG, 'ACTIVE' => 'Y');
                 $arSelect = array('ID','IBLOCK_ID','IBLOCK_TYPE_ID','IBLOCK_SECTION_ID','CODE', 'NAME','PICTURE','SECTION_PAGE_URL');
-                $rsSection = CIBlockSection::GetTreeList($arFilter, $arSelect);
+                $rsSection = CIBlockSection::GetList(array('SORT' => 'ASC'), $arFilter, true, $arSelect);
                 while($arSection = $rsSection->GetNext()) {
-                    $arHomeSection[$arSection[ID]][NAME] = $arSection['NAME'];
-                    $arHomeSection[$arSection[ID]][PICTURE] = CFile::GetPath($arSection['PICTURE']);
-                    $arHomeSection[$arSection[ID]][SECTION_PAGE_URL] = $arSection['SECTION_PAGE_URL'];
+                    if(empty($arSection['PICTURE']) || empty($arSection['ELEMENT_CNT'])) {
+                        continue;
+                    }
+
+                    $arHomeSection[] = array(
+                        'ID' => $arSection['ID'],
+                        'NAME' => $arSection['NAME'],
+                        'PICTURE' => CFile::GetPath($arSection['PICTURE']),
+                        'SECTION_PAGE_URL' => $arSection['SECTION_PAGE_URL'],
+                        'ELEMENT_CNT' => (int)$arSection['ELEMENT_CNT'],
+                    );
                 }
+
+                usort($arHomeSection, function($left, $right) {
+                    return $right['ELEMENT_CNT'] <=> $left['ELEMENT_CNT'];
+                });
+                $arHomeSection = array_slice($arHomeSection, 0, 12);
+
                 if($arHomeSection){
-                    $arHomeSectionFour = array_slice($arHomeSection,0,4,true);
+                    $arHomeSectionFour = array_splice($arHomeSection, 0, 12);
                 }
                 ?>
                 <div class="categories">
                     <? if(isset($arHomeSectionFour)): ?>
                         <?
-                        foreach($arHomeSectionFour as $del => $section):
-                        unset($arHomeSection[$del]);
+                        foreach($arHomeSectionFour as $section):
                             ?>
                             <a href="<?=$section['SECTION_PAGE_URL']?>" class="categories__item">
                             <span class="categories__item_wrapper">
@@ -189,18 +202,6 @@ $APPLICATION->SetTitle("Medplakaty - медицинские плакаты с д
 
                 </div>
 
-                <div class="categories">
-                    <? if(isset($arHomeSection)): ?>
-                        <? foreach($arHomeSection as $section): ?>
-                            <a href="<?=$section['SECTION_PAGE_URL']?>" class="categories__item">
-                            <span class="categories__item_wrapper">
-                                <span class="categories__img"><img src="<?=$section['PICTURE']?>" alt="categories"></span>
-                                <span class="categories__title"><?=$section['NAME']?></span>
-                            </span>
-                            </a>
-                        <?endforeach;?>
-                    <? endif; ?>
-                </div>
                 <hr class="hr">
 
                 <div class="title">Новинки</div>
@@ -246,7 +247,21 @@ $APPLICATION->SetTitle("Medplakaty - медицинские плакаты с д
                 <div class="goods">
 
                     <?
-                    $GLOBALS['arrFilter'] = array("PROPERTY_BEST_OFFER_VALUE" => "Y");
+                    $bestOfferResult = CIBlockElement::GetList(
+                        array(),
+                        array(
+                            "IBLOCK_ID" => IBLOCK_CATALOG,
+                            "ACTIVE" => "Y",
+                            "PROPERTY_BEST_OFFER_VALUE" => "Y",
+                        ),
+                        false,
+                        array("nTopCount" => 1),
+                        array("ID")
+                    );
+                    $hasMarkedBestOffers = (bool)$bestOfferResult->Fetch();
+                    $GLOBALS['arrFilter'] = $hasMarkedBestOffers
+                        ? array("PROPERTY_BEST_OFFER_VALUE" => "Y")
+                        : array();
                     $APPLICATION->IncludeComponent("bitrix:news.list", "best.offer", Array(
                         "ACTIVE_DATE_FORMAT" => "d.m.Y",	// Формат показа даты
                         "ADD_SECTIONS_CHAIN" => "N",	// Включать раздел в цепочку навигации
@@ -255,7 +270,7 @@ $APPLICATION->SetTitle("Medplakaty - медицинские плакаты с д
                         "AJAX_OPTION_HISTORY" => "N",	// Включить эмуляцию навигации браузера
                         "AJAX_OPTION_JUMP" => "N",	// Включить прокрутку к началу компонента
                         "AJAX_OPTION_STYLE" => "Y",	// Включить подгрузку стилей
-                        "CACHE_FILTER" => "N",	// Кешировать при установленном фильтре
+                        "CACHE_FILTER" => "Y",	// Кешировать при установленном фильтре
                         "CACHE_GROUPS" => "Y",	// Учитывать права доступа
                         "CACHE_TIME" => "36000000",	// Время кеширования (сек.)
                         "CACHE_TYPE" => "A",	// Тип кеширования
@@ -300,7 +315,7 @@ $APPLICATION->SetTitle("Medplakaty - медицинские плакаты с д
                         "SET_STATUS_404" => "N",	// Устанавливать статус 404
                         "SET_TITLE" => "N",	// Устанавливать заголовок страницы
                         "SHOW_404" => "N",	// Показ специальной страницы
-                        "SORT_BY1" => "ACTIVE_FROM",	// Поле для первой сортировки новостей
+                        "SORT_BY1" => $hasMarkedBestOffers ? "ACTIVE_FROM" : "SHOW_COUNTER",	// Сначала отмеченные, иначе самые просматриваемые
                         "SORT_BY2" => "SORT",	// Поле для второй сортировки новостей
                         "SORT_ORDER1" => "DESC",	// Направление для первой сортировки новостей
                         "SORT_ORDER2" => "ASC",	// Направление для второй сортировки новостей

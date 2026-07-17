@@ -51,10 +51,12 @@ $this->setFrameMode(true);
 					</div>
 					<span>за штуку</span>
 				</div>
-                <? if(count($arItem['ARTICLS']['VALUE']) > 1): ?>
+                <?$articles = $arItem['ARTICLS']['VALUE'] ?? array();?>
+                <?if(!is_array($articles)) $articles = ($articles !== '' && $articles !== null) ? array($articles) : array();?>
+                <? if(count($articles) > 1): ?>
                     <a href="javascript:void(0)" class="goods__basket icon-basket" onclick="$('#more_option_<?=$arItem['ID']?>').bPopup({zIndex:1000});"></a>
                 <?else:?>
-                    <input type="hidden" name="article" value="<?=$arItem['ARTICLS']['VALUE'][0]?>">
+                    <input type="hidden" name="article" value="<?=htmlspecialcharsbx($articles[0] ?? '')?>">
                     <a href="javascript:void(0)" class="goods__basket icon-basket" onclick="addToBasket2(<?=$arItem['ID']?>, $('#goods__counter_input_offer_<?=$arItem['ID']?>').val(),this);"></a>
                 <?endif;?>
 			</div>
