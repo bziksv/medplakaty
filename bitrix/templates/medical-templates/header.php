@@ -22,7 +22,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Roboto:300,400,500,700,900&amp;subset=cyrillic" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/css/vendor.css">
-    <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/css/main.css">
+    <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/css/main.css?v=<?=filemtime($_SERVER["DOCUMENT_ROOT"].SITE_TEMPLATE_PATH."/css/main.css")?>">
     <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/css/alertify.css">
     <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/css/default.css">
     <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/css/lightgallery.css">

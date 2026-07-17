@@ -126,7 +126,7 @@
 
 
 
-<script src="<?=SITE_TEMPLATE_PATH?>/js/main.js"></script>
+<script src="<?=SITE_TEMPLATE_PATH?>/js/main.js?v=<?=filemtime($_SERVER["DOCUMENT_ROOT"].SITE_TEMPLATE_PATH."/js/main.js")?>"></script>
 <script src="<?=SITE_TEMPLATE_PATH?>/js/alertify.js"></script>
 <script src="<?=SITE_TEMPLATE_PATH?>/js/jquery.maskinput.js"></script>
 <script src="<?=SITE_TEMPLATE_PATH?>/js/jquery.bpopup.min.js"></script>
