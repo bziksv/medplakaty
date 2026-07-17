@@ -48,6 +48,7 @@ bitrix/modules/*.zip
 # --- IDE / OS ---
 .idea/
 .vscode/
+.cursor/
 .DS_Store
 .osp/
 
