@@ -1,0 +1,33 @@
+---
+description: Контекст проекта medplakaty.ru (Bitrix)
+alwaysApply: true
+---
+
+# medplakaty.ru
+
+Bitrix-магазин медицинских плакатов и стендов, шаблон medical-templates.
+
+## Инфраструктура
+
+- GitHub: https://github.com/bziksv/medplakaty
+- Git root: `medplakaty.ru/` (= prod path), ветка **master**
+- Prod: `217.28.220.186`, path `/var/www/medplakaty_r_usr/data/www/medplakaty.ru`, SSH `vilmed`
+- Локально: http://127.0.0.1:8090/ (nginx :8090, php-fpm :9090)
+
+## Документация
+
+Перед изменениями читай `medplakaty.ru/docs/PROJECT.md`.
+
+## Стек
+
+- 1C-Bitrix (22.500.700), PHP 8.3 (локально soft)
+- Шаблон: `bitrix/templates/medical-templates`
+
+## Деплой
+
+- После правок: **только git push** (GitHub).
+- На prod: **только когда пользователь явно попросил** → `./scripts/deploy-prod.sh`.
+
+## Workspace
+
+Родитель `medplakaty/` — дампы SQL (`medplakaty_r.sql`) и `.cursorignore`, не git. Код, scripts и docs — в `medplakaty.ru/`.

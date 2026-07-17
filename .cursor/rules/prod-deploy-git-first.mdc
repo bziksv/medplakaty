@@ -1,0 +1,29 @@
+---
+description: Деплой medplakaty.ru — только через git, затем deploy-prod.sh
+alwaysApply: true
+---
+
+# Git и prod — раздельно
+
+## После любых правок кода
+
+1. `git commit` + `git push origin master` — **да, всегда**.
+2. `./scripts/deploy-prod.sh` / SSH на prod — **нет**, пока пользователь явно не попросил.
+
+Push в GitHub **не равен** выкатке на prod. Сервер обновляется только отдельным шагом.
+
+## Когда пользователь просит выкатить
+
+`cd medplakaty.ru && ./scripts/deploy-prod.sh` — только через git (`fetch` + `merge --ff-only` на prod).
+
+## Запрещено
+
+- Запускать `deploy-prod.sh` сразу после push без просьбы пользователя.
+- `scp`, правки файлов на prod, SSH-деплой в обход git.
+
+## Агент
+
+- Закончил правки → **commit + push**, на этом остановиться.
+- Prod → **только по фразе вроде «выкатывай на прод»**.
+
+Полные инструкции: `medplakaty.ru/docs/PROJECT.md`.
