@@ -27,6 +27,11 @@ img
     max-width: 100%;
     vertical-align: top;
 }
+html,
+body
+{
+    background-color: #fff;
+}
 body
 {
     color: #000;

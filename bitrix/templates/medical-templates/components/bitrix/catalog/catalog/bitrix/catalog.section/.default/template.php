@@ -68,10 +68,12 @@ if(empty($arResult['ITEMS']))
 							</div>
 							<span>за штуку</span>
 						</div>
-                        <? if(count($item['PROPERTIES']['ARTICLS']['VALUE']) > 1): ?>
-                            <a href="javascript:void(0)" class="goods__buy_thumbs" onclick="$('#more_option_<?=$item[ID]?>').bPopup({zIndex:1000});">Купить</a>
+                        <?$articles = $item['PROPERTIES']['ARTICLS']['VALUE'] ?? array();?>
+                        <?if(!is_array($articles)) $articles = ($articles !== '' && $articles !== null) ? array($articles) : array();?>
+                        <? if(count($articles) > 1): ?>
+                            <a href="javascript:void(0)" class="goods__buy_thumbs" onclick="$('#more_option_<?=$item['ID']?>').bPopup({zIndex:1000});">Купить</a>
                         <?else:?>
-                            <input type="hidden" name="article" value="<?=$item['PROPERTIES']['ARTICLS']['VALUE'][0]?>">
+                            <input type="hidden" name="article" value="<?=htmlspecialcharsbx($articles[0] ?? '')?>">
 						    <a href="javascript:void(0)" class="goods__buy_thumbs" onclick="addToBasket2(<?=$item['ID']?>, $('#goods__counter_input_<?=$item['ID']?>').val(),this);">Купить</a>
 						<?endif;?>
 					</div>
