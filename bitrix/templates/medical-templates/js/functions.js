@@ -22,6 +22,70 @@ $('.callback-btn').click(function(){
     });
 });
 
+function ensureBitrixSessid($form) {
+    var $sessid = $form.find('input[name="sessid"]');
+    if ($sessid.length && !$sessid.val() && typeof BX !== 'undefined' && BX.bitrix_sessid) {
+        $sessid.val(BX.bitrix_sessid());
+    }
+}
+
+function validateConsentForm($checkbox, $error) {
+    if (!$checkbox.length || $checkbox.is(':checked')) {
+        $error.hide();
+        return true;
+    }
+    $error.show();
+    return false;
+}
+
+function handleCallbackFormResult() {
+    var $callback = $('#callback');
+    if (!$callback.length) {
+        return;
+    }
+
+    var paramsHash = $callback.data('params-hash');
+    var urlParams = new URLSearchParams(window.location.search);
+    var success = urlParams.get('success');
+
+    if (success && paramsHash && success === String(paramsHash)) {
+        alertify.success('Спасибо, ваше сообщение принято.');
+        $callback.bPopup({zIndex: 1000});
+        if (window.history && window.history.replaceState) {
+            urlParams.delete('success');
+            var newSearch = urlParams.toString();
+            window.history.replaceState({}, document.title, window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash);
+        }
+        return;
+    }
+
+    if ($callback.find('.errortext').length) {
+        alertify.error('Ошибка отправки формы. Обновите страницу и попробуйте снова.');
+        $callback.bPopup({zIndex: 1000});
+    }
+}
+
+$(function() {
+    handleCallbackFormResult();
+
+    var $callbackForm = $('#callback form');
+    if ($callbackForm.length) {
+        $callbackForm.on('submit', function(e) {
+            var $form = $(this);
+            ensureBitrixSessid($form);
+            if (!validateConsentForm($('#callback-consent'), $form.find('.mf-consent-error'))) {
+                e.preventDefault();
+                return false;
+            }
+        });
+    }
+
+    $('#callback-consent').on('change', function() {
+        if ($(this).is(':checked')) {
+            $(this).closest('form').find('.mf-consent-error').hide();
+        }
+    });
+});
 
 
 var path = "/bitrix/templates/medical-templates/ajax/";

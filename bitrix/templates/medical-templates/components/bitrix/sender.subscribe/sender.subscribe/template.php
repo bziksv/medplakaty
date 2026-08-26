@@ -103,11 +103,8 @@ $buttonId = $this->randString();
 		<input class="subscribe__input" type="email" name="SENDER_SUBSCRIBE_EMAIL" value="<?=$arResult["EMAIL"]?>" title="<?=GetMessage("subscr_form_email_title")?>" placeholder="<?=htmlspecialcharsbx(GetMessage('subscr_form_email_title'))?>">
 		<button class="subscribe__btn" id="bx_subscribe_btn_<?=$buttonId?>"><span><?=GetMessage("subscr_form_button")?></span></button>
 
-<div>
-	<label>
-  <input type="checkbox" required>
-				<span>Нажимая на эту кнопку, я даю свое согласие на обработку персональных данных в соответствии с нашей <a target="_blank" href="/upload/politics.png">политикой</a>.</span>
-</label>
+<div class="subscribe__consent">
+	<?php include $_SERVER['DOCUMENT_ROOT'].SITE_TEMPLATE_PATH.'/include/consent_checkbox.php'; ?>
 </div>
 
 

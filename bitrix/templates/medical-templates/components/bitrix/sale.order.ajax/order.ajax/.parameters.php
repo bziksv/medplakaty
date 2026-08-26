@@ -189,7 +189,6 @@ $arTemplateParameters = array(
 		"MULTIPLE" => "N",
 		"VALUES" => array(
 			"yandex" => GetMessage("PICKUP_MAP_TYPE_YANDEX"),
-			"google" => GetMessage("PICKUP_MAP_TYPE_GOOGLE")
 		),
 		"DEFAULT" => "yandex",
 		"PARENT" => "VISUAL"

@@ -23,18 +23,18 @@
 		"AJAX_OPTION_JUMP" => "N",
 		"AJAX_OPTION_STYLE" => "Y",
 		"CACHE_TIME" => "3600",
-		"CACHE_TYPE" => "A",
+		"CACHE_TYPE" => "N",
 		"CONFIRMATION" => "N",
 		"HIDE_MAILINGS" => "N",
 		"SET_TITLE" => "N",
 		"SHOW_HIDDEN" => "N",
-		"USER_CONSENT" => "Y",
+		"USER_CONSENT" => "N",
 		"USER_CONSENT_ID" => "1",
-		"USER_CONSENT_IS_CHECKED" => "Y",
+		"USER_CONSENT_IS_CHECKED" => "N",
 		"USER_CONSENT_IS_LOADED" => "N",
 		"USE_PERSONALIZATION" => "Y",
 		"COMPONENT_TEMPLATE" => "sender.subscribe",
-		"COMPOSITE_FRAME_MODE" => "A",
+		"COMPOSITE_FRAME_MODE" => "N",
 		"COMPOSITE_FRAME_TYPE" => "AUTO"
 	),
 	false
@@ -89,7 +89,8 @@
             </div>
         </div>
 <hr>
-		<noindex><div>Мы используем файлы <a style="color: #fff;" target="_blank" href="/upload/cookies-medplakaty.png">cookies</a> и <a style="color: #fff;" target="_blank" href="/upload/rekomendatelnye-tehnologii.png"> рекомендательные технологии</a> для улучшения функционала сайта, персонализации рекламы и анализа статистики посещаемости. Используя сайт, вы соглашаетесь на обработку ваших персональных данных в соответстви с нашей <a style="color: #fff;" target="_blank" href="/upload/politics.png">политикой конфиденциальности</a>. Для отказа от обработки cookies можно отключить сохранение cookies в настройках вашего браузера.</div></noindex>
+<?php require_once $_SERVER['DOCUMENT_ROOT'].'/legal/include/paths.php'; ?>
+		<noindex><div>Мы используем файлы <a style="color: #fff;" target="_blank" href="<?=legal_img('cookie')?>">cookies</a> и <a style="color: #fff;" target="_blank" href="<?=legal_img('rekomend')?>">рекомендательные технологии</a> для улучшения функционала сайта, персонализации рекламы и анализа статистики посещаемости. Используя сайт, вы соглашаетесь на обработку ваших персональных данных в соответствии с <a style="color: #fff;" target="_blank" href="<?=legal_img('soglasie')?>">Согласием на обработку персональных данных</a> и <a style="color: #fff;" target="_blank" href="<?=legal_img('politika')?>">Политикой обработки персональных данных</a>. Для отказа от обработки cookies можно отключить сохранение cookies в настройках вашего браузера.</div></noindex>
     </div>
 </div>
 
@@ -104,7 +105,6 @@
 		"EVENT_MESSAGE_ID" => array(
 			0 => "53",
 		),
-		"ROI_VISIT" => $_COOKIE['roistat_visit'],
 		"IBLOCK_ID" => "37",
 		"IBLOCK_TYPE" => "feedback",
 		"OK_TEXT" => "Спасибо, ваше сообщение принято.",
@@ -115,9 +115,9 @@
 			3 => "MAIL",
 			4 => "QUERY",
 		),
-		"USE_CAPTCHA" => "Y",
+		"USE_CAPTCHA" => "N",
 		"COMPONENT_TEMPLATE" => "popup-callback",
-		"COMPOSITE_FRAME_MODE" => "A",
+		"COMPOSITE_FRAME_MODE" => "N",
 		"COMPOSITE_FRAME_TYPE" => "AUTO"
 	),
 	false
@@ -131,7 +131,7 @@
 <script src="<?=SITE_TEMPLATE_PATH?>/js/jquery.maskinput.js"></script>
 <script src="<?=SITE_TEMPLATE_PATH?>/js/jquery.bpopup.min.js"></script>
 <script src="<?=SITE_TEMPLATE_PATH?>/js/lightgallery.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="<?=SITE_TEMPLATE_PATH?>/js/vendor/jquery-ui/jquery-ui.js?v=<?=filemtime($_SERVER["DOCUMENT_ROOT"].SITE_TEMPLATE_PATH."/js/vendor/jquery-ui/jquery-ui.js")?>"></script>
 <script src="<?=SITE_TEMPLATE_PATH?>/js/functions.js"></script>
 
 

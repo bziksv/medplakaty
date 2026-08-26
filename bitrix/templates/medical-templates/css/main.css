@@ -4734,3 +4734,36 @@ ol,ul
 		width: 25%;
 		}
 }
+
+.consent-checkbox-label
+{
+    display: inline;
+    font-size: 13px;
+    line-height: 1.45;
+}
+.consent-checkbox
+{
+    display: block;
+    margin: 8px 0 0;
+    font-size: 13px;
+    line-height: 1.45;
+    cursor: pointer;
+}
+.consent-checkbox__input
+{
+    margin: 0 8px 0 0;
+    vertical-align: top;
+}
+.consent-checkbox-label__link
+{
+    color: #00b6ef;
+    text-decoration: underline;
+}
+.footer .consent-checkbox-label__link
+{
+    color: #fff;
+}
+.mfeedback-p .consent-checkbox-label__link
+{
+    color: #00b6ef;
+}

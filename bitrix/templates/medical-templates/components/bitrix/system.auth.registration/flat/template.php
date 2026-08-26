@@ -144,12 +144,7 @@ $APPLICATION->IncludeComponent(
 			</div>
 			<div class="bx-authform-input-container">
 
-<div>
-	<label>
-  <input type="checkbox" required>
-				<span>Нажимая на эту кнопку, я даю свое согласие на обработку персональных данных в соответствии с нашей <a target="_blank" href="/upload/politics.png">политикой</a>.</span>
-</label>
-</div>
+				<?php include $_SERVER['DOCUMENT_ROOT'].SITE_TEMPLATE_PATH.'/include/consent_checkbox.php'; ?>
 
 
 			</div>

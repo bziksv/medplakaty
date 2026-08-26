@@ -1,0 +1,2 @@
+<?php require_once $_SERVER['DOCUMENT_ROOT'].'/legal/include/paths.php'; ?>
+<span class="consent-checkbox-label">Даю <a class="consent-checkbox-label__link" target="_blank" href="<?=legal_img('soglasie')?>">согласие на обработку персональных данных</a> и подтверждаю ознакомление с <a class="consent-checkbox-label__link" target="_blank" href="<?=legal_img('politika')?>">Политикой обработки персональных данных</a>.</span>

@@ -11,7 +11,7 @@ Bitrix-интернет-магазин медицинских плакатов �
 | Prod IP | `217.28.220.186` (SSH: `vilmed`) |
 | Prod path | `/var/www/medplakaty_r_usr/data/www/medplakaty.ru` |
 | Домен | https://medplakaty.ru |
-| Локально | http://127.0.0.1:8090/ |
+| Локально | http://127.0.0.1:8100/ |
 
 Родительская папка `medplakaty/` — **не в git**: дампы БД (`medplakaty_r.sql`, `medplakaty_r.sql.gz`), `.cursorignore`.
 
@@ -40,7 +40,7 @@ medplakaty/                    # workspace (Mac)
 
 ## Локальная разработка (Mac, soft)
 
-Порты: **8090** (nginx), **9090** (php-fpm). MySQL 3306 (Homebrew).
+Порты: **8100** (nginx), **9100** (php-fpm). MySQL 3306 (Homebrew).
 
 ```bash
 cd medplakaty.ru
@@ -65,8 +65,9 @@ Soft-режим: php-fpm `ondemand`, max 2 workers, 256M RAM, opcache 64M.
 | 8087 | oftalmag |
 | 8088 | metprof-vrn |
 | 8089 | (занят) |
-| **8090** | **medplakaty** |
-| **9090** | **medplakaty php-fpm** |
+| 8090–8095 | (заняты другими nginx) |
+| **8100** | **medplakaty** |
+| **9100** | **medplakaty php-fpm** |
 
 ## Деплой на prod
 
@@ -106,4 +107,4 @@ git add … && git commit -m "…" && git push origin master   # после пр
 curl -sS -o /dev/null -w '%{http_code}\n' https://medplakaty.ru/
 ```
 
-Локально: `./scripts/start-dev.sh` и curl на `:8090`.
+Локально: `./scripts/start-dev.sh` и curl на `:8100`.

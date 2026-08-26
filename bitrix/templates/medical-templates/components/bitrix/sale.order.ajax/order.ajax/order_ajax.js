@@ -1696,6 +1696,16 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 		 */
 		clickOrderSaveAction: function(event)
 		{
+			this.disallowOrderSave();
+			this.endLoader();
+
+			if (!this.isCustomConsentChecked())
+			{
+				this.showCustomConsentError();
+				return BX.PreventDefault(event);
+			}
+			this.hideCustomConsentError();
+
 			if (this.isValidForm())
 			{
 				this.allowOrderSave();
@@ -8140,6 +8150,35 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 		disallowOrderSave: function()
 		{
 			this.orderSaveAllowed = false;
+		},
+
+		getCustomConsentCheckbox: function()
+		{
+			return BX('bx-soa-custom-consent');
+		},
+
+		isCustomConsentChecked: function()
+		{
+			var checkbox = this.getCustomConsentCheckbox();
+			return !checkbox || checkbox.checked;
+		},
+
+		showCustomConsentError: function()
+		{
+			var wrap = BX('bx-soa-custom-consent-wrap');
+			var error = wrap && wrap.querySelector('.bx-soa-consent-error');
+			if (error)
+				error.style.display = '';
+			if (wrap && wrap.scrollIntoView)
+				wrap.scrollIntoView({behavior: 'smooth', block: 'center'});
+		},
+
+		hideCustomConsentError: function()
+		{
+			var wrap = BX('bx-soa-custom-consent-wrap');
+			var error = wrap && wrap.querySelector('.bx-soa-consent-error');
+			if (error)
+				error.style.display = 'none';
 		},
 
 		initUserConsent: function()

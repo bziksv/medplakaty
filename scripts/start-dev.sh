@@ -60,10 +60,10 @@ fi
 "$NGINX" -c "$RUN_DIR/nginx.conf"
 sleep 1
 
-HTTP=$(curl -sS -o /tmp/medplakaty-check.html -w '%{http_code}' --max-time 60 http://127.0.0.1:8090/ || echo 000)
+HTTP=$(curl -sS -o /tmp/medplakaty-check.html -w '%{http_code}' --max-time 60 http://127.0.0.1:8100/ || echo 000)
 
-echo "soft http://127.0.0.1:8090/ → HTTP $HTTP"
-echo "php-fpm :9090 (ondemand, max 2 workers, 256M)"
+echo "soft http://127.0.0.1:8100/ → HTTP $HTTP"
+echo "php-fpm :9100 (ondemand, max 2 workers, 256M)"
 echo "stop: ./scripts/stop-dev.sh"
 
 if [ "$HTTP" = "000" ]; then

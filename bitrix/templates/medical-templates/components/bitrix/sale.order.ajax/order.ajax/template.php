@@ -451,14 +451,14 @@ else
 
 				<!--	ORDER SAVE BLOCK	-->
 				<div id="bx-soa-orderSave">
-					<div class="checkbox">
-<div>
-	<label>
-  <input type="checkbox" required>
-				<span>Нажимая на эту кнопку, я даю свое согласие на обработку персональных данных в соответствии с нашей <a target="_blank" href="/upload/politics.png">политикой</a>.</span>
-</label>
-</div>
-
+					<div class="checkbox" id="bx-soa-custom-consent-wrap">
+						<label>
+							<input type="checkbox" id="bx-soa-custom-consent" name="bx-soa-custom-consent">
+							<?php include $_SERVER['DOCUMENT_ROOT'].SITE_TEMPLATE_PATH.'/include/consent_checkbox_label.php'; ?>
+						</label>
+						<div class="bx-soa-consent-error" style="display:none;color:#a94442;margin-top:8px;">
+							Необходимо дать согласие на обработку персональных данных
+						</div>
 					</div>
 					<a href="javascript:void(0)" style="margin: 10px 0" class="pull-right btn btn-default btn-lg hidden-xs" data-save-button="true">
 						<?=$arParams['MESS_ORDER']?>
@@ -618,26 +618,6 @@ else
 					else
 						setTimeout(bx_ymaps_waiter, 100);
 				})();
-			</script>
-			<?
-		}
-
-		if ($arParams['PICKUP_MAP_TYPE'] === 'google')
-		{
-			$this->addExternalJs($templateFolder.'/scripts/google_maps.js');
-			$apiKey = htmlspecialcharsbx(Main\Config\Option::get('fileman', 'google_map_api_key', ''));
-			?>
-			<script async defer
-				src="<?=$scheme?>://maps.googleapis.com/maps/api/js?key=<?=$apiKey?>&callback=bx_gmaps_waiter">
-			</script>
-			<script>
-				function bx_gmaps_waiter()
-				{
-					if (BX.Sale && BX.Sale.OrderAjaxComponent)
-						BX.Sale.OrderAjaxComponent.initMaps();
-					else
-						setTimeout(bx_gmaps_waiter, 100);
-				}
 			</script>
 			<?
 		}

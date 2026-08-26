@@ -60,21 +60,8 @@ if(strlen($arResult["OK_MESSAGE"]) > 0):?>
 
 	<? endforeach; ?>
 
-    <?if($arParams["USE_CAPTCHA"] == "Y"):?>
-        <div class="mf-name">
-            <div class="g-recaptcha" data-sitekey="6LdmHK4UAAAAAGzcV1Ttdz-_C1sR9a0XEVNZn36u"></div>
-        </div>
-    <?endif;?>
-
 	<div class="mf-name">
-		<?$APPLICATION->IncludeComponent("bitrix:main.userconsent.request", "userconsent.request", Array(
-		"ID" => "1",
-		"IS_CHECKED" => "Y",
-		"AUTO_SAVE" => "N",
-		"IS_LOADED" => "Y",
-		),
-	false
-	);?>
+		<?php include $_SERVER['DOCUMENT_ROOT'].SITE_TEMPLATE_PATH.'/include/consent_checkbox.php'; ?>
 	</div>
 
 	<input type="hidden" name="PARAMS_HASH" value="<?=$arResult["PARAMS_HASH"]?>">
