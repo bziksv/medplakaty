@@ -47,11 +47,15 @@ function handleCallbackFormResult() {
     var paramsHash = $callback.data('params-hash');
     var urlParams = new URLSearchParams(window.location.search);
     var success = urlParams.get('success');
+    var okMessage = $.trim($callback.find('.mf-ok-text').text());
+    var isSuccess = (success && paramsHash && success === String(paramsHash)) || okMessage.length > 0;
 
-    if (success && paramsHash && success === String(paramsHash)) {
-        alertify.success('Спасибо, ваше сообщение принято.');
+    if (isSuccess) {
+        if (typeof alertify !== 'undefined') {
+            alertify.success(okMessage || 'Спасибо, ваше сообщение принято.');
+        }
         $callback.bPopup({zIndex: 1000});
-        if (window.history && window.history.replaceState) {
+        if (window.history && window.history.replaceState && success) {
             urlParams.delete('success');
             var newSearch = urlParams.toString();
             window.history.replaceState({}, document.title, window.location.pathname + (newSearch ? '?' + newSearch : '') + window.location.hash);
@@ -60,7 +64,9 @@ function handleCallbackFormResult() {
     }
 
     if ($callback.find('.errortext').length) {
-        alertify.error('Ошибка отправки формы. Обновите страницу и попробуйте снова.');
+        if (typeof alertify !== 'undefined') {
+            alertify.error('Ошибка отправки формы. Обновите страницу и попробуйте снова.');
+        }
         $callback.bPopup({zIndex: 1000});
     }
 }

@@ -102,6 +102,7 @@
 	"popup-callback", 
 	array(
 		"EMAIL_TO" => "info@medplakaty.ru",
+		"EVENT_NAME" => "CALLBACK",
 		"EVENT_MESSAGE_ID" => array(
 			0 => "53",
 		),
@@ -132,7 +133,7 @@
 <script src="<?=SITE_TEMPLATE_PATH?>/js/jquery.bpopup.min.js"></script>
 <script src="<?=SITE_TEMPLATE_PATH?>/js/lightgallery.js"></script>
 <script src="<?=SITE_TEMPLATE_PATH?>/js/vendor/jquery-ui/jquery-ui.js?v=<?=filemtime($_SERVER["DOCUMENT_ROOT"].SITE_TEMPLATE_PATH."/js/vendor/jquery-ui/jquery-ui.js")?>"></script>
-<script src="<?=SITE_TEMPLATE_PATH?>/js/functions.js"></script>
+<script src="<?=SITE_TEMPLATE_PATH?>/js/functions.js?v=<?=filemtime($_SERVER["DOCUMENT_ROOT"].SITE_TEMPLATE_PATH."/js/functions.js")?>"></script>
 
 
 <!-- Yandex.Metrika counter от Prime -->

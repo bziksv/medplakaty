@@ -94,6 +94,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["submit"] <> '')
 				"ACTIVE"         => "Y"
 			);
 			$PRODUCT_ID = $el->Add($arLoadProductArray);
+			if(!$PRODUCT_ID)
+				$arResult["ERROR_MESSAGE"][] = $el->LAST_ERROR ?: GetMessage("MF_REQ_FIELDS");
 		}
 
 
