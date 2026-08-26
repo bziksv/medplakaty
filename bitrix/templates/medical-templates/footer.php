@@ -101,7 +101,7 @@
 	"nbrains:main.feedback", 
 	"popup-callback", 
 	array(
-		"EMAIL_TO" => "info@medplakaty.ru",
+		"EMAIL_TO" => "medplakaty@almamed.planfix.ru",
 		"EVENT_NAME" => "CALLBACK",
 		"EVENT_MESSAGE_ID" => array(
 			0 => "53",
