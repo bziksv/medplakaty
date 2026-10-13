@@ -47,5 +47,31 @@ Disallow: /*?
 Disallow: /personal/*
 Disallow: /personal/cart/
 ##############
+# Служебные / include / верификация — закрыть от индексации
+Disallow: /hand1CtoSite.php
+Disallow: /mailru-domain17GRUZzJTLQddM3d.html
+Disallow: /sect_bottom.php
+Disallow: /sect_sidebar.php
+Disallow: /yandex_a2c1dae201ba1b53.html
+Disallow: /about/content.php
+Disallow: /catalog/sidebar.php
+Disallow: /desktop_app/
+Disallow: /dostavka/content.php
+Disallow: /include/
+Disallow: /klientam/content.php
+Disallow: /klientam/kak-zakazat/content.php
+Disallow: /klientam/otvety-na-voprosy/content.php
+Disallow: /kontakty/content.php
+Disallow: /oplata/content.php
+Disallow: /search/
+Disallow: /site_db/
+Disallow: /store/
+Disallow: /test/
+Disallow: /legal/cookie/content.php
+Disallow: /legal/include/
+Disallow: /legal/politika-pdn/content.php
+Disallow: /legal/rekomendatelnye-tehnologii/content.php
+Disallow: /legal/soglasie-pdn/content.php
+##############
 Host: https://medplakaty.ru/
 Sitemap: https://medplakaty.ru/sitemap.xml
