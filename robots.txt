@@ -67,12 +67,7 @@ Disallow: /search/
 Disallow: /site_db/
 Disallow: /store/
 Disallow: /test/
-Disallow: /legal/$
-Disallow: /legal/cookie/content.php
-Disallow: /legal/include/
-Disallow: /legal/politika-pdn/content.php
-Disallow: /legal/rekomendatelnye-tehnologii/content.php
-Disallow: /legal/soglasie-pdn/content.php
+Disallow: /legal/
 ##############
 Host: https://medplakaty.ru/
 Sitemap: https://medplakaty.ru/sitemap.xml
