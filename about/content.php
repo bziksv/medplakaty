@@ -3,7 +3,7 @@
 </p>
  Мы хотим, чтобы в приоритете клиентов было здоровье и правильный образ жизни. Наглядность – это прямая дорога к успеху. <br>
 <p>
- <img width="205" src="/upload/medialibrary/753/cgktr4c14gbvgylzcoa5p6vo22glwhni.jpg" height="205" style="margin: 0px 40px 10px 0px;"> <img width="205" src="/upload/medialibrary/9be/k0xez9k10t9c9q302e6cs7ls5v11cofy.jpg" height="205" style="margin: 0px 40px 10px 0px;"> <img width="205" src="/upload/medialibrary/f43/50obqcp41b2gx98lwnufozbszrlei9jj.jpg" height="205" style="margin: 0px 40px 10px 0px;">
+ <img width="205" src="/upload/medialibrary/753/cgktr4c14gbvgylzcoa5p6vo22glwhni.jpg" height="205" style="margin: 0px 40px 10px 0px;" alt=""> <img width="205" src="/upload/medialibrary/9be/k0xez9k10t9c9q302e6cs7ls5v11cofy.jpg" height="205" style="margin: 0px 40px 10px 0px;" alt=""> <img width="205" src="/upload/medialibrary/f43/50obqcp41b2gx98lwnufozbszrlei9jj.jpg" height="205" style="margin: 0px 40px 10px 0px;" alt="">
 </p>
 <h2>Наша компания гордится:</h2>
 
