@@ -21,6 +21,6 @@
 	 Мы рады сотрудничеству с оптовыми покупателями, библиотеками и медицинскими учреждениями, постоянно проводим акции, даем хорошие скидки.
 </p>
 <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
- <img src="/upload/medialibrary/главная-1.jpg" style="width: 250px; height: 250px;"> <img src="/upload/medialibrary/главная-2.jpg" style="width: 250px; height: 250px;"> <img src="/upload/medialibrary/главная-3.jpg" style="width: 250px; height: 250px;"> <img src="/upload/medialibrary/главная-4.jpg" style="width: 250px; height: 250px;">
+ <img src="/upload/medialibrary/главная-1.jpg" alt="" style="width: 250px; height: 250px;"> <img src="/upload/medialibrary/главная-2.jpg" alt="" style="width: 250px; height: 250px;"> <img src="/upload/medialibrary/главная-3.jpg" alt="" style="width: 250px; height: 250px;"> <img src="/upload/medialibrary/главная-4.jpg" alt="" style="width: 250px; height: 250px;">
 </div>
 <br>

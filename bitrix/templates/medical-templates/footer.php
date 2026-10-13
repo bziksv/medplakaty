@@ -68,7 +68,7 @@
             </div>
             <div class="footer__col flex-3">
                 <div class="footer__phone icon-phone">
-                    <img src="<?=SITE_TEMPLATE_PATH?>/img/footer_phone.jpg">
+                    <img src="<?=SITE_TEMPLATE_PATH?>/img/footer_phone.jpg" alt="">
                     <span>88005555550</span>
                 </div>
                 <a href="javascript:void(0);" class="footer__callback footer__link callback-btn">Заказать звонок</a>
@@ -90,7 +90,7 @@
         </div>
 <hr>
 <?php require_once $_SERVER['DOCUMENT_ROOT'].'/legal/include/paths.php'; ?>
-		<noindex><div>Мы используем файлы <a style="color: #fff;" target="_blank" href="<?=legal_img('cookie')?>">cookies</a> и <a style="color: #fff;" target="_blank" href="<?=legal_img('rekomend')?>">рекомендательные технологии</a> для улучшения функционала сайта, персонализации рекламы и анализа статистики посещаемости. Используя сайт, вы соглашаетесь на обработку ваших персональных данных в соответствии с <a style="color: #fff;" target="_blank" href="<?=legal_img('soglasie')?>">Согласием на обработку персональных данных</a> и <a style="color: #fff;" target="_blank" href="<?=legal_img('politika')?>">Политикой обработки персональных данных</a>. Для отказа от обработки cookies можно отключить сохранение cookies в настройках вашего браузера.</div></noindex>
+		<!--noindex--><div>Мы используем файлы <a style="color: #fff;" target="_blank" href="<?=legal_img('cookie')?>">cookies</a> и <a style="color: #fff;" target="_blank" href="<?=legal_img('rekomend')?>">рекомендательные технологии</a> для улучшения функционала сайта, персонализации рекламы и анализа статистики посещаемости. Используя сайт, вы соглашаетесь на обработку ваших персональных данных в соответствии с <a style="color: #fff;" target="_blank" href="<?=legal_img('soglasie')?>">Согласием на обработку персональных данных</a> и <a style="color: #fff;" target="_blank" href="<?=legal_img('politika')?>">Политикой обработки персональных данных</a>. Для отказа от обработки cookies можно отключить сохранение cookies в настройках вашего браузера.</div><!--/noindex-->
     </div>
 </div>
 
