@@ -67,6 +67,7 @@ Disallow: /search/
 Disallow: /site_db/
 Disallow: /store/
 Disallow: /test/
+Disallow: /legal/$
 Disallow: /legal/cookie/content.php
 Disallow: /legal/include/
 Disallow: /legal/politika-pdn/content.php
