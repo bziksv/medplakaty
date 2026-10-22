@@ -97,7 +97,7 @@ git add … && git commit -m "…" && git push origin master   # после пр
 
 ## Стек
 
-- 1C-Bitrix **22.500.700** (2023), PHP 8.3 локально (soft)
+- 1C-Bitrix **22.500.700** (2023), PHP 8.2 локально (soft)
 - Шаблон сайта: `bitrix/templates/medical-templates`
 - Прочие шаблоны: `desktop_app`, `eshop_app`, `landing24`
 
