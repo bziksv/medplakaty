@@ -2,6 +2,12 @@
 //IBlock catalog id
 define("IBLOCK_CATALOG","33");
 
+// Dead OnUserLogin → CGroupAuthProvider::OnUserLogin (method missing) causes
+// sale.order.ajax 500 on first checkout click under PHP 8.2. See lorshop CHECKOUT-FIRST-CLICK.md.
+if (function_exists('UnRegisterModuleDependences')) {
+	UnRegisterModuleDependences('main', 'OnUserLogin', 'main', 'CGroupAuthProvider', 'OnUserLogin');
+}
+
 if ((!empty($_REQUEST['success']) && is_string($_REQUEST['success']))
 	|| (!empty($_POST['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST')) {
 	if (!defined('BX_COMPOSITE_DISABLED')) {
