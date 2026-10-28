@@ -48,6 +48,12 @@ if(Add2BasketByProductID(
     $PROPS
     )
 ){
+	// Session total is rebuilt via refreshData(PRICE) and drops CUSTOM_PRICE to BASE.
+	$fuserId = (int)CSaleBasket::GetBasketUserID();
+	if ($fuserId > 0 && class_exists('\Bitrix\Sale\BasketComponentHelper')) {
+		\Bitrix\Sale\BasketComponentHelper::clearFUserBasketPrice($fuserId, SITE_ID);
+		\Bitrix\Sale\BasketComponentHelper::clearFUserBasketQuantity($fuserId, SITE_ID);
+	}
     print 'Товар успешно добавлен в корзину';
 }else{
     print 'Ошибка добавления товара в корзину';
